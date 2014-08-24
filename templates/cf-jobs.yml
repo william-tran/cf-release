@@ -187,6 +187,17 @@ jobs:
     - name: cf1
       static_ips: ~
 
+  - name: postgres9_z1
+    templates:
+    - name: postgres9
+      release: (( meta.release.name ))
+    instances: 0
+    resource_pool: medium_z1
+    persistent_disk: 4096
+    networks:
+    - name: cf1
+      static_ips: ~
+
   - name: uaa_z1
     templates:
     - name: uaa
