@@ -39,6 +39,10 @@ spring_profiles: <%= properties.uaadb.db_scheme %>
 logging:
   config: /var/vcap/jobs/uaa/config/log4j.properties
 
+<% if properties.uaa.internal_hostnames %>
+internalHostnames: <%= properties.uaa.internal_hostnames %>
+<% end %>
+
 <% if properties.uaa.jwt && properties.uaa.jwt.signing_key && properties.uaa.jwt.verification_key %>
 jwt:
   token:

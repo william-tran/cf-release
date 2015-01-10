@@ -47,6 +47,8 @@ properties:
     description:
   uaa.client.autoapprove:
     description:
+  uaa.internal_hostnames:
+    description: 'Contains comprehensive list of hostnames routed to the UAA. The UAA uses this to resolve subdomains for Identity Zones.'
   uaa.user.authorities:
     description: 'Contains a list of the default authorities/scopes assigned to a user.'
     default:
