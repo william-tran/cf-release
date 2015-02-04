@@ -2638,6 +2638,12 @@ properties:
         authorities: scim.userids
         secret: cloud_controller_username_lookup_secret
         authorized-grant-types: client_credentials
+      identity:
+        secret: identity-secret
+        authorities: zones.create,scim.zones,uaa.resource
+        authorized-grant-types: authorization_code,client_credentials
+        autoapprove: true
+        scope: zones.*.admin,openid
     jwt:
       signing_key: '-----BEGIN RSA PRIVATE KEY-----
 

@@ -864,6 +864,12 @@ properties:
         authorities: scim.userids
         secret: cloud_controller_username_lookup_secret
         authorized-grant-types: client_credentials
+      identity:
+        secret: identity_secret_openstack
+        authorities: zones.create,scim.zones,uaa.resource
+        authorized-grant-types: authorization_code,client_credentials
+        autoapprove: true
+        scope: zones.*.admin,openid
     jwt:
       signing_key: sk
       verification_key: vk
