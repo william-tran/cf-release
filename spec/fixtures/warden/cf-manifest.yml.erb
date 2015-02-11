@@ -244,38 +244,6 @@ jobs:
     release: cf
   update: {}
 - instances: 1
-  name: login_z1
-  networks:
-  - name: cf1
-  properties:
-    networks:
-      apps: cf1
-    metron_agent:
-      zone: z1
-  resource_pool: medium_z1
-  templates:
-  - name: login
-    release: cf
-  - name: metron_agent
-    release: cf
-  update: {}
-- instances: 0
-  name: login_z2
-  networks:
-  - name: cf2
-  properties:
-    networks:
-      apps: cf2
-    metron_agent:
-      zone: z2
-  resource_pool: medium_z2
-  templates:
-  - name: login
-    release: cf
-  - name: metron_agent
-    release: cf
-  update: {}
-- instances: 1
   name: api_z1
   networks:
   - name: cf1
@@ -2526,7 +2494,7 @@ properties:
       domain: null
     asset_base_url: null
     brand: oss
-    catalina_opts: -Xmx96m -XX:MaxPermSize=64m
+    catalina_opts: null
     invitations_enabled: null
     links:
       home: https://console.10.244.0.34.xip.io
@@ -2670,6 +2638,13 @@ properties:
         authorities: scim.userids
         secret: cloud_controller_username_lookup_secret
         authorized-grant-types: client_credentials
+      identity:
+        authorities: zones.create,scim.zones
+        authorized-grant-types: authorization_code,client_credentials,refresh_token,password
+        autoapprove: true
+        scope: zones.*.admin,openid,clients.read,clients.write,clients.secret,clients.admin
+        secret: identity-secret
+    internal_hostnames: localhost,uaa.10.244.0.34.xip.io,login.10.244.0.34.xip.io
     jwt:
       signing_key: '-----BEGIN RSA PRIVATE KEY-----
 
@@ -2769,7 +2744,7 @@ resource_pools:
     name: random
   name: medium_z1
   network: cf1
-  size: 7
+  size: 6
   stemcell:
     name: bosh-warden-boshlite-ubuntu-trusty-go_agent
     version: latest
