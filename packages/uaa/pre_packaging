@@ -1,5 +1,8 @@
 set -e -x
 
+echo "Using BUILD_DIR:"
+echo $BUILD_DIR
+
 #registrar information
 cd ${BUILD_DIR}/cf-registrar-bundle-for-identity
 BUNDLE_WITHOUT=development:test bundle package --all
