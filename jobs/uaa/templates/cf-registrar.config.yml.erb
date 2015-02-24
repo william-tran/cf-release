@@ -12,8 +12,8 @@ message_bus_servers:
 uri:
   - uaa.<%= properties.domain %>
   - login.<%= properties.domain %>
-  - *.uaa.<%= properties.domain %>
-  - *.login.<%= properties.domain %>
+  - '*.uaa.<%= properties.domain %>'
+  - '*.login.<%= properties.domain %>'
 host: <%= spec.networks.send(properties.networks.apps).ip %>
 index: <%= spec.index %>
 port: <%= p("uaa.port") %>
