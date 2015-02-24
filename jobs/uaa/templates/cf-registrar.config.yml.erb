@@ -9,6 +9,7 @@ message_bus_servers:
   - nats://<%= p("nats.user") %>:<%= p("nats.password") %>@<%= address %>:<%= p("nats.port") %>
 <% end %>
 
+
 uri:
   - uaa.<%= properties.domain %>
   - '*.uaa.<%= properties.domain %>'
